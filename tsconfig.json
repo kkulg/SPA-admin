@@ -9,7 +9,26 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
-    "types": ["vite/client"]
+    "types": ["vite/client"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@pages/*": ["src/pages/*"],
+      "@layout/*": ["src/layout/*"],
+      "@utils/*": ["src/utils/*"],
+      "@utils": ["src/utils/index"],
+      "@config/*": ["src/config/*"],
+      "@apis/*": ["src/apis/*"],
+      "@router/*": ["src/router/*"],
+      "@router": ["src/router/index"],
+      "@components/*": ["src/components/*"],
+      "@store/*": ["src/store/*"],
+      "@store": ["src/store/index"],
+      "@services/*": ["src/services/*"],
+      "@services": ["src/services/index"],
+      "@directives/*": ["src/directives/*"],
+      "@directives": ["src/directives/index"]
+    }
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
 }
