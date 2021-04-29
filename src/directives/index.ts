@@ -1,7 +1,7 @@
-import { App } from 'vue';
+import { App, Directive } from 'vue';
 
 type DirectiveType = {
-  [propName: string]: any;
+  [propName: string]: Directive;
 };
 
 const directives: DirectiveType = {};

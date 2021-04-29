@@ -7,10 +7,12 @@ import router from '@router';
 import store from '@store';
 // 全局指令
 import { installGlobalDirective } from '@directives';
+// 公共样式
+import '@common/scss/common.scss';
 // 根组件
-import AppComponent from './App.vue';
+import LcApp from './App.vue';
 
-const app: App = createApp(AppComponent);
+const app: App = createApp(LcApp);
 app.use(router);
 app.use(store);
 installGlobalDirective(app);

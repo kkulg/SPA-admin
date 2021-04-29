@@ -26,16 +26,17 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
-      '@pages': resolve(__dirname, 'pages'),
-      '@layout': resolve(__dirname, 'layout'),
-      '@utils': resolve(__dirname, 'utils'),
-      '@config': resolve(__dirname, 'config'),
-      '@apis': resolve(__dirname, 'apis'),
-      '@router': resolve(__dirname, 'router'),
-      '@components': resolve(__dirname, 'components'),
-      '@store': resolve(__dirname, 'store'),
-      '@services': resolve(__dirname, 'services'),
-      '@directives': resolve(__dirname, 'directives')
+      '@pages': resolve(__dirname, 'src/pages'),
+      '@layout': resolve(__dirname, 'src/layout'),
+      '@utils': resolve(__dirname, 'src/utils'),
+      '@config': resolve(__dirname, 'src/config'),
+      '@apis': resolve(__dirname, 'src/apis'),
+      '@router': resolve(__dirname, 'src/router'),
+      '@components': resolve(__dirname, 'src/components'),
+      '@store': resolve(__dirname, 'src/store'),
+      '@services': resolve(__dirname, 'src/services'),
+      '@directives': resolve(__dirname, 'src/directives'),
+      '@common': resolve(__dirname, 'src/common')
     }
   }
 });
