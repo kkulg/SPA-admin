@@ -1,23 +1,20 @@
 <template>
-  <lc-layout></lc-layout>
+  <router-view></router-view>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import LcLayout from '@layout/layout.vue';
 
 export default defineComponent({
   name: 'LcApp',
-  components: {
-    LcLayout
-  }
+  components: {}
 });
 </script>
 <style lang="scss">
 html,
 body,
 #app {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
 }
 </style>
