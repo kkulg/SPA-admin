@@ -5,7 +5,7 @@ import { DashboardRoutes } from '@router/dashboard';
 
 export const BaseRoutes: Array<RouteRecordRaw> = [
   {
-    path: '/',
+    path: '',
     redirect: '/sign-in'
   },
   {
@@ -13,7 +13,7 @@ export const BaseRoutes: Array<RouteRecordRaw> = [
     component: LcSignIn
   },
   {
-    path: '',
+    path: '/',
     component: LcLayout,
     children: [...DashboardRoutes]
   }

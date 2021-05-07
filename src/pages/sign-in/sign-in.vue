@@ -50,7 +50,8 @@ export default defineComponent({
     left: 50%;
     transform: translate3d(-50%, -50%, 0);
     background: #fff;
-    border-radius: 4px;
+    border-radius: 2px;
+    box-shadow: 0px -5px 12px 4px rgba(0, 0, 0, 0.09);
     padding: 20px;
     width: 400px;
     &__item {
