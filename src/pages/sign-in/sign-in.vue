@@ -62,12 +62,10 @@ export default defineComponent({
       .el-button {
         width: 100%;
       }
-      ::v-deep .el-input {
-        &__inner {
-          border: none;
-          border-radius: 0;
-          border-bottom: 1px solid #dcdfe6;
-        }
+      ::v-deep(.el-input__inner) {
+        border: none;
+        border-radius: 0;
+        border-bottom: 1px solid #dcdfe6;
       }
     }
   }

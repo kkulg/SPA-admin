@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { LoginModule } from './login/login.module';
 
 @Module({
-  imports: [LoginModule],
+  imports: [TypeOrmModule.forRoot(), LoginModule],
   controllers: [],
   providers: [],
 })
