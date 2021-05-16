@@ -27,4 +27,9 @@ export default defineComponent({
   width: 100%;
   height: 100%;
 }
+.lc-main {
+  background: #f0f2f5;
+  padding: 24px;
+  overflow: auto;
+}
 </style>

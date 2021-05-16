@@ -16,9 +16,7 @@ export default defineConfig({
             const scssName = name.slice(3);
             return `element-plus/packages/theme-chalk/src/${scssName}.scss`;
           },
-          resolveComponent: (name: string) => {
-            return `element-plus/lib/${name}`;
-          }
+          resolveComponent: (name: string) => `element-plus/lib/${name}`
         }
       ]
     })
