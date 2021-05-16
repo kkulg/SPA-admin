@@ -24,8 +24,8 @@ import { ElInput, ElButton, ElMessage } from 'element-plus';
 export default defineComponent({
   name: 'LcSignIn',
   components: {
-    [ElInput.name]: ElInput,
-    [ElButton.name]: ElButton
+    ElInput,
+    ElButton
   },
   setup() {
     const username = ref('admin');
