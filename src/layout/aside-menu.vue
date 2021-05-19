@@ -1,33 +1,36 @@
 <template>
-  <el-menu default-active="2">
-    <el-submenu index="1">
-      <template #title>
-        <i class="el-icon-basketball"></i>
-        <span>dashboard</span>
-      </template>
-      <el-menu-item index="1-2">
-        <template #title>分析页</template>
+  <el-menu :default-active="defaultActive"
+           :default-openeds="defaultOpeneds"
+           :router="true"
+           :collapse="collapse">
+    <template v-for="(menu, index) in asideMenus">
+      <el-submenu v-if="menu.children?.length"
+                  :key="index"
+                  :index="menu.path">
+        <template #title>
+          <i :class="menu.icon"></i>
+          <span>{{ menu.title }}</span>
+        </template>
+        <el-menu-item v-for="(submenu, index) in menu.children"
+                      :key="index"
+                      :index="submenu.path">
+          <template #title>{{ submenu.title }}</template>
+        </el-menu-item>
+      </el-submenu>
+      <el-menu-item v-if="!menu.children?.length"
+                    :key="index"
+                    :index="menu.path">
+        <i :class="menu.icon"></i>
+        <template #title>{{ menu.title }}</template>
       </el-menu-item>
-      <el-menu-item index="1-3">
-        <template #title>监控页</template>
-      </el-menu-item>
-    </el-submenu>
-    <el-menu-item index="2">
-      <i class="el-icon-menu"></i>
-      <template #title>导航二</template>
-    </el-menu-item>
-    <el-menu-item index="3">
-      <i class="el-icon-document"></i>
-      <template #title>导航三</template>
-    </el-menu-item>
-    <el-menu-item index="4">
-      <i class="el-icon-setting"></i>
-      <template #title>导航四</template>
-    </el-menu-item>
+    </template>
   </el-menu>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { computed } from 'vue';
+import { useStore } from 'vuex';
+import { useRoute } from 'vue-router';
 import { ElMenu, ElSubmenu, ElMenuItem } from 'element-plus';
 
 export default defineComponent({
@@ -36,15 +39,72 @@ export default defineComponent({
     ElMenu,
     ElSubmenu,
     ElMenuItem
+  },
+  props: {
+    collapse: {
+      type: Boolean,
+      default: false
+    }
+  },
+  setup() {
+    const store = useStore();
+    const route = useRoute();
+
+    const defaultActive = computed(() => route.path);
+    const asideMenus = computed(() => store.getters.asideMenus);
+    const defaultOpeneds = computed(() => {
+      const _asideMenus = asideMenus.value;
+      const _defaultActive = defaultActive.value;
+      let _defaultOpeneds: Array<any> = [];
+      for (const menu of _asideMenus) {
+        if (menu.path === _defaultActive) {
+          _defaultOpeneds = [menu.path];
+          break;
+        } else if (menu.children?.length) {
+          const submenu = menu.children.filter((submenu: any) => {
+            return submenu.path === _defaultActive;
+          })[0];
+          if (submenu) {
+            _defaultOpeneds = [menu.path];
+          }
+          break;
+        }
+      }
+      return _defaultOpeneds;
+    });
+    return {
+      asideMenus,
+      defaultActive,
+      defaultOpeneds
+    };
   }
 });
 </script>
-<style lang="scss" scoped>
-::v-deep(.el-menu) {
-  .el-menu-item.is-active {
-    color: #1890ff;
-    background-color: #e6f7ff;
-    border-right: 3px solid #1890ff;
+<style lang="scss">
+.el-menu {
+  border-right: none !important;
+  .el-menu-item {
+    padding-left: 54px !important;
+    &:hover,
+    &:focus {
+      background-color: #fff;
+      color: #1890ff;
+    }
+    &.is-active {
+      color: #1890ff;
+      background-color: #e6f7ff;
+      border-right: 3px solid #1890ff;
+    }
+  }
+
+  .el-submenu.is-active {
+    .el-submenu__title {
+      color: #1890ff;
+      i {
+        margin-right: 10px;
+        color: #1890ff;
+      }
+    }
   }
 }
 </style>

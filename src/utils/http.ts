@@ -68,6 +68,20 @@ class HttpUtil {
     });
   }
   /**
+   * form
+   */
+  public form(url: string, data = {}, config?: httpRequestConfig) {
+    return this.request({
+      url,
+      method: 'post',
+      headers: {
+        'Content-Type': ContentType.FORM
+      },
+      data,
+      ...config
+    });
+  }
+  /**
    * put
    */
   public put(url: string, data = {}, config?: httpRequestConfig) {
