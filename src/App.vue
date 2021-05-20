@@ -6,8 +6,7 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'LcApp',
-  components: {}
+  name: 'LcApp'
 });
 </script>
 <style lang="scss">

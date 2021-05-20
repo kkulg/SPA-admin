@@ -1,0 +1,14 @@
+{
+    "global": {
+
+    },
+    "error": {
+
+    },
+    "page": {
+        "signIn": {
+            "signIn": "登录",
+            "signUp": "注册"
+        }
+    }
+}

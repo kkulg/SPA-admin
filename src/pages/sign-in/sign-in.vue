@@ -3,14 +3,31 @@
     <div class="lc-sign-in-form">
       <div class="lc-sign-in-form__header">SPA-admin</div>
       <div class="lc-sign-in-form__body">
+        <el-tabs v-model="activeTabName"
+                 @tab-click="handleChangeTab">
+          <el-tab-pane :label="$t('page.signIn.signIn')"
+                       name="signIn">
+          </el-tab-pane>
+          <el-tab-pane label="注册"
+                       name="signUp">
+          </el-tab-pane>
+        </el-tabs>
         <div class="lc-sign-in-form__item">
-          <el-input v-model="username" placeholder="请输入用户名"></el-input>
+          <el-input v-model="username"
+                    placeholder="请输入用户名"></el-input>
         </div>
         <div class="lc-sign-in-form__item">
-          <el-input v-model="password" placeholder="请输入密码"></el-input>
+          <el-input v-model="password"
+                    placeholder="请输入密码"></el-input>
+        </div>
+        <div class="lc-sign-in-form__item"
+             v-if="activeTabName === 'signUp'">
+          <el-input v-model="password"
+                    placeholder="请输入确认密码"></el-input>
         </div>
         <div class="lc-sign-in-form__item">
-          <el-button type="primary" @click="handleSignIn">登录</el-button>
+          <el-button type="primary"
+                     @click="handleSignIn">登录</el-button>
         </div>
       </div>
     </div>
@@ -18,33 +35,34 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import { useRouter } from 'vue-router';
-import { ElInput, ElButton, ElMessage } from 'element-plus';
+import { ElInput, ElButton, ElTabs, ElTabPane } from 'element-plus';
+import useUserSignIn from '@pages/sign-in/composables/useUserSignIn';
 
 export default defineComponent({
   name: 'LcSignIn',
   components: {
     ElInput,
-    ElButton
+    ElButton,
+    ElTabs,
+    ElTabPane
   },
   setup() {
     const username = ref('admin');
     const password = ref('888888');
-    const router = useRouter();
-    const handleSignIn = () => {
-      if (username.value === 'admin' && password.value === '888888') {
-        router.push('/dashboard/analysis');
-      } else {
-        ElMessage({
-          type: 'error',
-          message: '用户名和密码不正确'
-        });
-      }
+    const activeTabName = ref('signIn');
+
+    const { handleSignIn } = useUserSignIn(username.value, password.value);
+
+    const handleChangeTab = (tab: any) => {
+      activeTabName.value = tab.props.name;
     };
+
     return {
       username,
       password,
-      handleSignIn
+      activeTabName,
+      handleSignIn,
+      handleChangeTab
     };
   }
 });
@@ -77,6 +95,9 @@ export default defineComponent({
       border-radius: 2px;
       box-shadow: 0px -5px 12px 4px rgba(0, 0, 0, 0.09);
       padding: 20px;
+      ::v-deep(.el-tabs__item.is-active) {
+        font-size: 18px;
+      }
     }
     &__item {
       margin-bottom: 15px;

@@ -5,6 +5,8 @@ import 'element-plus/packages/theme-chalk/src/base.scss';
 import router from '@router';
 // 状态管理
 import store from '@store';
+// 国际化
+import { i18n } from '@common/plugins/index';
 // 全局指令
 import { installGlobalDirective } from '@directives';
 // 公共样式
@@ -15,5 +17,6 @@ import LcApp from './App.vue';
 const app: App = createApp(LcApp);
 app.use(router);
 app.use(store);
+app.use(i18n);
 installGlobalDirective(app);
 app.mount('#app');

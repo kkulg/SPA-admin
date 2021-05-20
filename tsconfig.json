@@ -9,7 +9,7 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
-    "types": ["vite/client"],
+    "types": ["vite/client", "@intlify/vite-plugin-vue-i18n/client"],
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
@@ -31,7 +31,8 @@
       "@services": ["./src/services/index"],
       "@directives/*": ["./src/directives/*"],
       "@directives": ["./src/directives/index"],
-      "@common/*": ["./src/common/*"]
+      "@common/*": ["./src/common/*"],
+      "@common": ["./src/common/index"]
     }
   },
   "include": [
@@ -39,7 +40,5 @@
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "server/src/**/*.ts",
-    "server/test/**/*.ts"
   ]
 }
