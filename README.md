@@ -1,10 +1,8 @@
 # SPA-admin
-- - -
 
 SPA-admin 旨在打造一款规范、低代码、低配置、使用简单、高效、高性能的管理系统
 
 ## 项目规约
-- - -
 
 ### 1、命名
 
@@ -18,7 +16,7 @@ SPA-admin 旨在打造一款规范、低代码、低配置、使用简单、高�
 2. [BEM](https://en.bem.info/)
 
 ### 2、目录
-
+```
 ---src
 ------apis // 请求接口地址
 ------assets // 静态资源
@@ -36,9 +34,9 @@ SPA-admin 旨在打造一款规范、低代码、低配置、使用简单、高�
 ------services // 纯业务不涉及视图（数据请求、复杂业务处理等）
 ------store // 全局通信
 ------utils // 工具类
+```
 
 ## 启动
-- - -
 
 ```shell
 // 本地开发
@@ -48,7 +46,6 @@ npm run build
 ```
 
 ## git
-- - -
 
 ```shell
 // 暂存修改文件
@@ -58,19 +55,16 @@ git cz
 ```
 
 ## 国际化
-- - -
 
 * 词条统一配置在locales/{lang}.json: en-us: 英语;zh-cn: 中文
 * 全局template中使用：$t(`${entryKey}`)
 
 ## utils
-- - -
 
 * http: 请求数据统一工具
 * ui: 统一动态UI工具
   
 ## element-plus
-- - -
 
 按需加载引入：
 ```typescript
