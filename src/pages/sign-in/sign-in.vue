@@ -36,7 +36,7 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import { ElInput, ElButton, ElTabs, ElTabPane } from 'element-plus';
-import useUserSignIn from '@pages/sign-in/composables/useUserSignIn';
+import useUserSignIn from '@/pages/sign-in/composables/use-user-sign-in';
 
 export default defineComponent({
   name: 'LcSignIn',
