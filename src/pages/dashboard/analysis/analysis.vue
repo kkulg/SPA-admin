@@ -21,20 +21,17 @@
         </el-skeleton>
       </div>
     </el-col>
-    <el-col :span="6">
-      <div class="grid-content"></div>
-    </el-col>
-    <el-col :span="6">
-      <div class="grid-content"></div>
-    </el-col>
-    <el-col :span="6">
-      <div class="grid-content"></div>
+    <el-col :span="18">
+      <div class="grid-content">
+        <lc-editor></lc-editor>
+      </div>
     </el-col>
   </el-row>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElRow, ElCol, ElSkeleton, ElSkeletonItem } from 'element-plus';
+import LcEditor from '@components/editor/src/index.vue';
 
 export default defineComponent({
   name: 'LcAnalysis',
@@ -42,7 +39,8 @@ export default defineComponent({
     ElRow,
     ElCol,
     ElSkeleton,
-    ElSkeletonItem
+    ElSkeletonItem,
+    LcEditor
   }
 });
 </script>
