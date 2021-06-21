@@ -22,7 +22,30 @@
       </div>
     </el-col>
     <el-col :span="18">
-      <div class="grid-content">
+      <el-button-group>
+        <el-button size="mini"
+                   icon="el-icon-edit"></el-button>
+        <el-button size="mini"
+                   icon="el-icon-share"></el-button>
+        <el-button size="mini"
+                   icon="el-icon-delete"></el-button>
+      </el-button-group>
+
+      <el-dropdown size="mini"
+                   split-button>
+        超小尺寸
+        <template #dropdown>
+          <el-dropdown-menu>
+            <el-dropdown-item>黄金糕</el-dropdown-item>
+            <el-dropdown-item>狮子头</el-dropdown-item>
+            <el-dropdown-item>螺蛳粉</el-dropdown-item>
+            <el-dropdown-item>双皮奶</el-dropdown-item>
+            <el-dropdown-item>蚵仔煎</el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
+      <div class="grid-content"
+           style="margin-top:10px">
         <lc-editor></lc-editor>
       </div>
     </el-col>
@@ -30,7 +53,17 @@
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElRow, ElCol, ElSkeleton, ElSkeletonItem } from 'element-plus';
+import {
+  ElRow,
+  ElCol,
+  ElSkeleton,
+  ElSkeletonItem,
+  ElButtonGroup,
+  ElButton,
+  ElDropdown,
+  ElDropdownMenu,
+  ElDropdownItem
+} from 'element-plus';
 import LcEditor from '@components/editor/src/index.vue';
 
 export default defineComponent({
@@ -40,7 +73,12 @@ export default defineComponent({
     ElCol,
     ElSkeleton,
     ElSkeletonItem,
-    LcEditor
+    LcEditor,
+    ElButtonGroup,
+    ElButton,
+    ElDropdown,
+    ElDropdownMenu,
+    ElDropdownItem
   }
 });
 </script>

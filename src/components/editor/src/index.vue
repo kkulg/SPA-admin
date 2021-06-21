@@ -10,22 +10,29 @@ import 'quill/dist/quill.core.css';
 import 'quill/dist/quill.snow.css';
 
 export type RefElement = Element | null;
-export type RefQuill = Quill | null;
 
 import useCreateEditor from '@components/editor/src/composables/use-create-editor';
+import useToolbar0ptions from '@components/editor/src/composables/use-toolbar-options';
+import useRegisterFont from '@components/editor/src/composables/use-register-font';
 
 export default defineComponent({
   name: 'LcEditor',
   setup() {
     const root: Ref<RefElement> = ref<RefElement>(null);
-    const editor: Ref<RefQuill> = ref<RefQuill>(null);
+    let editor: Quill | null = null;
 
     onMounted(() => {
       const rootElement: Element = root.value as Element;
+      const { toolbarOptions } = useToolbar0ptions();
+      useRegisterFont();
       const { quill } = useCreateEditor(rootElement, {
+        modules: {
+          toolbar: toolbarOptions
+        },
         theme: 'snow'
       });
-      editor.value = quill;
+      editor = quill;
+      console.log(editor);
     });
 
     return {
@@ -35,8 +42,7 @@ export default defineComponent({
   }
 });
 </script>
-<style lang="scss" scoped>
-.lc-editor {
-  width: 100%;
-}
+<style lang="scss">
+@import 'quill.element-plus.scss';
+@import 'quill.custom-font.scss';
 </style>
